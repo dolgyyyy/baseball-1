@@ -19,3 +19,4 @@ class TestGame(TestCase):
         self.assert_illegal_argument(None)
         self.assert_illegal_argument("12")
         self.assert_illegal_argument("1234")
+        self.assert_illegal_argument("12s")
