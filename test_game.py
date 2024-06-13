@@ -15,8 +15,7 @@ class TestGame(TestCase):
         except TypeError:
             pass
 
-    def test_exception_when_input_is_none(self):
+    def test_exception_when_invalid_input(self):
         self.assert_illegal_argument(None)
-
-    def test_exception_when_input_length_is_unmatched(self):
         self.assert_illegal_argument("12")
+        self.assert_illegal_argument("1234")
