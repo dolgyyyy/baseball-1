@@ -31,18 +31,8 @@ class TestGame(TestCase):
 
     def test_return_solve_result_if_matched_number(self):
         self.game.question = "123"
-        result: GameResult = self.game.guess("123")
-
-        solved = True
-        strikes = 3
-        balls = 0
-        self.assert_matched_number(result, solved, strikes, balls)
+        self.assert_matched_number(self.game.guess("123"), True, 3, 0)
 
     def test_return_solve_result_if_unmatched_number(self):
         self.game.question = "123"
-        result: GameResult = self.game.guess("456")
-
-        solved = False
-        strikes = 0
-        balls = 0
-        self.assert_matched_number(result, solved, strikes, balls)
+        self.assert_matched_number(self.game.guess("456"), False, 0, 0)
