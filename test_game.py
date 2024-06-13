@@ -13,8 +13,7 @@ class TestGame(TestCase):
             self.game.guess(None)
 
     def test_exception_when_input_length_is_unmatched(self):
-        guessNumber = "12"
-        self.assert_illegal_argument(guessNumber)
+        self.assert_illegal_argument("12")
 
     def assert_illegal_argument(self, guessNumber):
         try:
