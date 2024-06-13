@@ -9,7 +9,7 @@ class Game:
     def guess(self, guessNumber):
         self.assert_illegal_value(guessNumber)
         if self.is_solved(guessNumber):
-            return GameResult(True, 3, 0)
+            return self.get_success_game_result()
         else:
             strikes = 0
             balls = 0
@@ -20,6 +20,9 @@ class Game:
                     balls += 1
 
             return GameResult(False, strikes, balls)
+
+    def get_success_game_result(self):
+        return GameResult(True, 3, 0)
 
     def is_solved(self, guessNumber):
         return guessNumber == self.question
