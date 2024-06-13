@@ -23,6 +23,12 @@ class TestGame(TestCase):
         self.assert_illegal_argument("12s")
         self.assert_illegal_argument("121")
 
+    def assert_matched_number(self, balls, result, solved, strikes):
+        self.assertIsNotNone(result)
+        self.assertEqual(solved, result.get_solved())
+        self.assertEqual(strikes, result.get_strikes())
+        self.assertEqual(balls, result.get_balls())
+
     def test_return_solve_result_if_matched_number(self):
         self.game.question = "123"
         result: GameResult = self.game.guess("123")
@@ -42,9 +48,3 @@ class TestGame(TestCase):
         balls = 0
 
         self.assert_matched_number(balls, result, solved, strikes)
-
-    def assert_matched_number(self, balls, result, solved, strikes):
-        self.assertIsNotNone(result)
-        self.assertEqual(solved, result.get_solved())
-        self.assertEqual(strikes, result.get_strikes())
-        self.assertEqual(balls, result.get_balls())
