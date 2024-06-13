@@ -10,7 +10,10 @@ class Game:
             if not ord('0') <= ord(number) <= ord('9'):
                 raise TypeError()
 
-        if guessNumber[0] == guessNumber[1] or \
-            guessNumber[0] == guessNumber[2] or \
-            guessNumber[1] == guessNumber[2]:
+        if self.is_duplicated_number(guessNumber):
             raise TypeError()
+
+    def is_duplicated_number(self, guessNumber):
+        return guessNumber[0] == guessNumber[1] or \
+            guessNumber[0] == guessNumber[2] or \
+            guessNumber[1] == guessNumber[2]
