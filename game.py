@@ -11,15 +11,18 @@ class Game:
         if self.is_solved(guessNumber):
             return self.get_success_game_result()
         else:
-            strikes = 0
-            balls = 0
-            for i in range(len(self.question)):
-                if self.question.find(guessNumber[i]) == i:
-                    strikes += 1
-                elif self.question.find(guessNumber[i]) > -1:
-                    balls += 1
+            return self.get_unsolved_game_result(guessNumber)
 
-            return GameResult(False, strikes, balls)
+    def get_unsolved_game_result(self, guessNumber):
+        strikes = 0
+        balls = 0
+        for i in range(len(self.question)):
+            if self.question.find(guessNumber[i]) == i:
+                strikes += 1
+            elif self.question.find(guessNumber[i]) > -1:
+                balls += 1
+        aa = GameResult(False, strikes, balls)
+        return aa
 
     def get_success_game_result(self):
         return GameResult(True, 3, 0)
