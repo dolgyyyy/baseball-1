@@ -31,10 +31,7 @@ class TestGame(TestCase):
         strikes = 3
         balls = 0
 
-        self.assertIsNotNone(result)
-        self.assertEqual(solved, result.get_solved())
-        self.assertEqual(strikes, result.get_strikes())
-        self.assertEqual(balls, result.get_balls())
+        self.assert_matched_number(balls, result, solved, strikes)
 
     def test_return_solve_result_if_unmatched_number(self):
         self.game.question = "123"
@@ -44,6 +41,9 @@ class TestGame(TestCase):
         strikes = 0
         balls = 0
 
+        self.assert_matched_number(balls, result, solved, strikes)
+
+    def assert_matched_number(self, balls, result, solved, strikes):
         self.assertIsNotNone(result)
         self.assertEqual(solved, result.get_solved())
         self.assertEqual(strikes, result.get_strikes())
